@@ -1,0 +1,51 @@
+{
+    "name": "neil/bsmq",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "hyperf",
+        "beanstalkd"
+    ],
+    "description": "neil/bsmq",
+    "autoload": {
+        "psr-4": {
+            "Neil\\Bsmq\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HyperfTest\\": "tests"
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "hyperf/di": "2.0.*",
+        "hyperf/framework": "2.0.*",
+        "hyperf/pool": "^2.0",
+        "pda/pheanstalk": "3.2.1"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "mockery/mockery": "^1.0",
+        "phpstan/phpstan": "^0.12",
+        "phpunit/phpunit": ">=7.0",
+        "swoole/ide-helper": "dev-master",
+        "swow/swow": "dev-develop",
+        "symfony/var-dumper": "^5.1"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit -c phpunit.xml --colors=always",
+        "analyse": "phpstan analyse --memory-limit 1024M -l 0 ./src",
+        "cs-fix": "php-cs-fixer fix $1"
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "hyperf": {
+            "config": "Neil\\Bsmq\\ConfigProvider"
+        }
+    }
+}
