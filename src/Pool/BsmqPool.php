@@ -9,13 +9,13 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace Neil\Bsmq\Pool;
+namespace Neilqin\Bsmq\Pool;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\ConnectionInterface;
 use Hyperf\Pool\Pool;
-use Neil\Bsmq\Frequency;
-use Neil\Bsmq\BsmqConnection;
+use Neilqin\Bsmq\Frequency;
+use Neilqin\Bsmq\BsmqConnection;
 use Hyperf\Utils\Arr;
 use Psr\Container\ContainerInterface;
 

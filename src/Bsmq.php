@@ -9,10 +9,10 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace Neil\Bsmq;
+namespace Neilqin\Bsmq;
 
-use Neil\Bsmq\Exception\InvalidBsmqConnectionException;
-use Neil\Bsmq\Pool\PoolFactory;
+use Neilqin\Bsmq\Exception\InvalidBsmqConnectionException;
+use Neilqin\Bsmq\Pool\PoolFactory;
 
 /**
  * @mixin \Bsmq

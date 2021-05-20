@@ -1,5 +1,5 @@
 {
-    "name": "neil/bsmq",
+    "name": "neilqin/bsmq",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -7,10 +7,10 @@
         "hyperf",
         "beanstalkd"
     ],
-    "description": "neil/bsmq",
+    "description": "neilqin/bsmq",
     "autoload": {
         "psr-4": {
-            "Neil\\Bsmq\\": "src/"
+            "Neilqin\\Bsmq\\": "src/"
         }
     },
     "autoload-dev": {
@@ -45,7 +45,7 @@
     "minimum-stability": "dev",
     "extra": {
         "hyperf": {
-            "config": "Neil\\Bsmq\\ConfigProvider"
+            "config": "Neilqin\\Bsmq\\ConfigProvider"
         }
     }
 }

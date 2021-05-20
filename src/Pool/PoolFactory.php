@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace Neil\Bsmq\Pool;
+namespace Neilqin\Bsmq\Pool;
 
 use Hyperf\Di\Container;
 use Psr\Container\ContainerInterface;
