@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Neilqin\Bsmq;
 
 use Hyperf\Contract\ConfigInterface;
-use Hyperf\Bsmq\Exception\InvalidBsmqProxyException;
+use Neilqin\Bsmq\Exception\InvalidBsmqProxyException;
 
 class BsmqFactory
 {
