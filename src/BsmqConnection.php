@@ -40,10 +40,11 @@ class BsmqConnection extends BaseConnection implements ConnectionInterface
     ];
 
     /**
-     * Current bsmq database.
-     * @var null|int
+     * Current bsmq tube.
+     * @var null|string
      */
-    protected $database;
+    protected $tube;
+    protected $tubeCmd;
 
     public function __construct(ContainerInterface $container, Pool $pool, array $config)
     {
@@ -93,6 +94,10 @@ class BsmqConnection extends BaseConnection implements ConnectionInterface
             $bsmq->setOption($name, $value);
         }
         
+        if ($this->tube && $this->tubeCmd) {
+            $bsmq->{$this->tubeCmd}($this->tube);
+        }
+        
         $this->connection = $bsmq;
         $this->lastUseTime = microtime(true);
 
@@ -138,5 +143,10 @@ class BsmqConnection extends BaseConnection implements ConnectionInterface
     {
         $bsmq = new Pheanstalk($host, $port, $timeout, TRUE);
         return $bsmq;
+    }
+    public function setTube($cmd,$tube): void
+    {
+        $this->tubeCmd = $cmd;
+        $this->tube = $tube;
     }
 }
