@@ -167,7 +167,7 @@ class Bsmq
      * Get a connection from coroutine context, or from bsmq connectio pool.
      * @param mixed $hasContextConnection
      */
-    private function getConnection($hasContextConnection=false): BsmqConnection
+    public function getConnection($hasContextConnection=false): BsmqConnection
     {
         $connection = null;
         if ($hasContextConnection) {
