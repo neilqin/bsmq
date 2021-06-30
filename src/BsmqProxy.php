@@ -11,7 +11,7 @@ declare(strict_types=1);
  */
 namespace Neilqin\Bsmq;
 
-use Hyperf\Bsmq\Pool\PoolFactory;
+use Neilqin\Bsmq\Pool\PoolFactory;
 
 /**
  * @mixin \Bsmq
