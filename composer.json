@@ -20,9 +20,9 @@
     },
     "require": {
         "php": ">=7.3",
-        "hyperf/di": "2.1.*",
-        "hyperf/framework": "2.1.*",
-        "hyperf/pool": "^2.1",
+        "hyperf/di": "2.*",
+        "hyperf/framework": "2.*",
+        "hyperf/pool": "2.*",
         "pda/pheanstalk": "3.2.1"
     },
     "require-dev": {
