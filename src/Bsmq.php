@@ -13,7 +13,7 @@ namespace Neilqin\Bsmq;
 
 use Neilqin\Bsmq\Exception\InvalidBsmqConnectionException;
 use Neilqin\Bsmq\Pool\PoolFactory;
-use Hyperf\Utils\Context;
+use Hyperf\Context\Context;
 /**
  * 在该类上尽量使用当前类开放出来的方法
  * @mixin \Bsmq
@@ -87,7 +87,8 @@ class Bsmq
         try {
             $connection = $connection->getConnection();
             // Execute the command with the arguments.
-            $result = $connection->putInTube($tube,$urlLink,$priority,$delaySecond,$ttr);
+            $result = $connection->useTube($tube)->put($urlLink,$priority,$delaySecond,$ttr);
+            //$result = $connection->putInTube($tube,$urlLink,$priority,$delaySecond,$ttr);
         } finally {
             // Release the connection after command executed.
             if (! $hasContextConnection) {
@@ -110,7 +111,8 @@ class Bsmq
         try {
             $connection = $connection->getConnection();
             // Execute the command with the arguments.
-            $result = $connection->reserveFromTube($tube,$timeout);
+//            $result = $connection->reserveFromTube($tube,$timeout);
+            $result = $connection->watchOnly($tube)->reserveWithTimeout($timeout);
         } finally {
             // Release the connection after command executed.
             if (! $hasContextConnection) {

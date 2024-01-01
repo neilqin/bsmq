@@ -18,6 +18,7 @@ use Hyperf\Pool\Exception\ConnectionException;
 use Hyperf\Pool\Pool;
 use Psr\Container\ContainerInterface;
 use Pheanstalk\Pheanstalk;
+use Pheanstalk\Exception\SocketException;
 /**
  * @method bool select(int $db)
  */
@@ -58,7 +59,11 @@ class BsmqConnection extends BaseConnection implements ConnectionInterface
     {
         try {
             $result = $this->connection->{$name}(...$arguments);
-        } catch (\Throwable $exception) {
+        }
+        catch (\Pheanstalk\Exception\SocketException $exception) {//socket写错误，重试一次操作
+            $result = $this->retry($name, $arguments, $exception);
+        }
+        catch (\Pheanstalk\Exception\ConnectionException $exception) {//connect错误，重试一次
             $result = $this->retry($name, $arguments, $exception);
         }
 
@@ -141,7 +146,7 @@ class BsmqConnection extends BaseConnection implements ConnectionInterface
     
     protected function createBsmq($host, $port, $timeout)
     {
-        $bsmq = new Pheanstalk($host, $port, $timeout, TRUE);
+        $bsmq = Pheanstalk::create($host, $port, $timeout);
         return $bsmq;
     }
     public function setTube($cmd,$tube): void
