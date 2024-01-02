@@ -52,7 +52,7 @@ class Bsmq
         } finally {
             if (! $hasContextConnection) {
                 if ($this->shouldUseSameConnection($name)) {
-                    if ($name=='useTube' && $tube = $arguments[0]) {
+                    if ($tube = $arguments[0]) {
                         $connection->setTube($name,$tube);
                     }
                     // Should storage the connection to coroutine context, then use defer() to release the connection.
@@ -111,8 +111,8 @@ class Bsmq
         try {
             $connection = $connection->getConnection();
             // Execute the command with the arguments.
-//            $result = $connection->reserveFromTube($tube,$timeout);
-            $result = $connection->watchOnly($tube)->reserveWithTimeout($timeout);
+            $result = $connection->reserveFromTube($tube,$timeout);
+            //$result = $connection->watchOnly($tube)->reserveWithTimeout($timeout);
         } finally {
             // Release the connection after command executed.
             if (! $hasContextConnection) {

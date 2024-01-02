@@ -125,7 +125,7 @@ class BsmqConnection extends BaseConnection implements ConnectionInterface
     protected function retry($name, $arguments, \Throwable $exception)
     {
         $logger = $this->container->get(StdoutLoggerInterface::class);
-        $logger->warning(sprintf('Bsmq::__call failed, because ' . $exception->getMessage()));
+        $logger->warning(sprintf('Bsmq::%s failed, because ' . $exception->getMessage(), $name));
         try {
             $this->reconnect();
             $result = $this->connection->{$name}(...$arguments);
@@ -146,7 +146,8 @@ class BsmqConnection extends BaseConnection implements ConnectionInterface
     
     protected function createBsmq($host, $port, $timeout)
     {
-        $bsmq = Pheanstalk::create($host, $port, $timeout);
+//        $bsmq = Pheanstalk::create($host, $port, $timeout);
+        $bsmq = new Pheanstalk($host, $port, $timeout, false);
         return $bsmq;
     }
     public function setTube($cmd,$tube): void
