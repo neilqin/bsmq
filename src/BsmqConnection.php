@@ -19,9 +19,6 @@ use Hyperf\Pool\Pool;
 use Psr\Container\ContainerInterface;
 use Pheanstalk\Pheanstalk;
 use Pheanstalk\Exception\SocketException;
-/**
- * @method bool select(int $db)
- */
 class BsmqConnection extends BaseConnection implements ConnectionInterface
 {
 
